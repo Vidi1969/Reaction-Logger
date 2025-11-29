@@ -77,7 +77,11 @@ async def set_react_log(ctx, channel: discord.TextChannel):
 @bot.event
 async def on_command_error(ctx, error):
     if isinstance(error, commands.CommandNotFound):
-        await ctx.send("Unknown command. Try !reactlog #channel or !react-log #channel.")
+        # Only respond if the attempted command is !reactlog or !react-log
+        invoked = ctx.invoked_with.lower() if hasattr(ctx, 'invoked_with') else ''
+        if invoked in ["reactlog", "react-log"]:
+            await ctx.send("Unknown command. Try !reactlog #channel or !react-log #channel.")
+        # Otherwise, ignore unknown commands
     else:
         raise error
 
