@@ -1,0 +1,15 @@
+# .gitignore for Python projects
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+ENV/
+.env
+.venv/
+*.env
+*.env.*
+# VS Code
+.vscode/
